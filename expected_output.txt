@@ -1,6 +1,3 @@
-
-### eg1 ######################
-
 outlook,$temp,wind,!play,>dom
 sunny,85,FALSE,no,0
 sunny,80,TRUE,no,0
