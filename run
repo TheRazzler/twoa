@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 if which javac
   then echo "jdk installed"
-  else sudo apt-get install javac
+  else
+  sudo apt-get install default-jre
+  sudo apt-get install default-jdk
 fi
 
 echo "Compiling"
