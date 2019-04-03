@@ -7,6 +7,6 @@ if which javac
 fi
 
 echo "Compiling"
-./compile_all.sh
+javac -d bin -cp bin src/*
 
 cat input.txt | java -cp bin Dom
