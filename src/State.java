@@ -7,11 +7,9 @@ import java.io.PrintStream;
  */
 public abstract class State {
   /**
-   * The action this State will take given this String
-   * Fits in with polymorphism
-   * @param input, the input which this state reads
-   * @param output the output to which this state writes
-   * @return the state to transition to
+   * Handles the transition as well as I/O and side effects
+   * @param input the input for the program
+   * @param output the output for the program
    */
    public abstract State action(Scanner input, PrintStream output);
 }

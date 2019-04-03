@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+if which javac
+  then echo "jdk installed"
+  else sudo apt-get install javac
+fi
+
+echo "Compiling"
+./compile_all.sh
+
+cat input.txt | java -cp bin Dom
