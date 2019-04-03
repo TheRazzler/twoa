@@ -1,0 +1,15 @@
+outlook,$temp,wind,!play,>dom
+sunny,85,FALSE,no,0
+sunny,80,TRUE,no,0
+overcast,83,FALSE,yes,0
+rainy,70,FALSE,yes,0
+rainy,68,FALSE,yes,0
+rainy,65,TRUE,no,0
+overcast,64,TRUE,yes,0
+sunny,72,FALSE,no,0
+sunny,69,FALSE,yes,0
+rainy,75,FALSE,yes,0
+sunny,75,TRUE,yes,0
+overcast,72,TRUE,yes,0
+overcast,81,FALSE,yes,0
+rainy,71,TRUE,no,0
