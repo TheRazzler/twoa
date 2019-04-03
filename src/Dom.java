@@ -113,7 +113,7 @@ public class Dom {
       if(domScore == (long) domScore)
         output.println("," + (long) domScore);
       else
-        output.println("," + domScore);
+        output.printf(",%.2f\n", domScore);
       rowNum++;
       return this;
     }

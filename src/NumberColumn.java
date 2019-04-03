@@ -16,7 +16,11 @@ public class NumberColumn extends Column {
   
   @Override
   public void add(String s) {
-    double value = Double.parseDouble(s);
+    double value;
+    if(s.equals("?"))
+      value = Double.POSITIVE_INFINITY;
+    else
+      value = Double.parseDouble(s);
     if(size >= values.length) {
       double[] temp = new double[values.length * 2];
       for(int i = 0; i < size; i++) {
@@ -25,10 +29,12 @@ public class NumberColumn extends Column {
       values = temp;
     }
     values[size++] = value;
-    if(value > max)
-      max = value;
-    if(value < min)
-      min = value;
+    if(!isUnknown(value)) {
+      if(value > max)
+        max = value;
+      if(value < min)
+        min = value;
+    }
   }
   
   public double get(int i) {
@@ -36,15 +42,23 @@ public class NumberColumn extends Column {
   }
   
   public double norm(double value) {
+    if(isUnknown(value))
+      return 0.5;
     return (value - min) / (max - min + Math.pow(10, -32));
   }
   
   @Override
   public String toString(int index) {
     double val = values[index];
+    if(isUnknown(val))
+      return "?";
     if(val == (long) val)
       return "" + (long) val;
     return "" + val;
+  }
+  
+  private boolean isUnknown(double value) {
+    return value == Double.POSITIVE_INFINITY;
   }
   
   public int getWeight() {
