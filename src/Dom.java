@@ -106,7 +106,7 @@ public class Dom {
       while(table.get(initIdx) == null)
         initIdx++;
       output.print(table.get(initIdx).getHeader());
-      for(int i = 1; i < table.size(); i++) {
+      for(int i = initIdx + 1; i < table.size(); i++) {
         Column col = table.get(i);
         if(col != null)
           output.print("," + col.getHeader());
@@ -134,7 +134,7 @@ public class Dom {
         initIdx++;
       output.print(table.get(initIdx).toString(rowNum));
       
-      for(int i = 1; i < table.size(); i++) {
+      for(int i = initIdx + 1; i < table.size(); i++) {
         Column col = table.get(i);
         if(col != null)
           output.print("," + col.toString(rowNum));

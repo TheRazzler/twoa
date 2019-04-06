@@ -5,8 +5,40 @@ if which javac
   sudo apt-get install default-jre
   sudo apt-get install default-jdk
 fi
-
-echo "Compiling"
-javac -d bin -cp bin src/*
-
-cat input.txt | java -cp bin Dom
+echo "---------------------------------------------------------------------------------"
+echo "We replaced dom in the pipe. Input for dom requires use of the whole TS pipe."
+echo "The whole pipe is run in this script except for monte_carlo. This program produces random output even with a seed."
+echo "It was run once and redirected to input.txt, this is redirected to the rest of the pipe."
+echo
+echo "Please cd into etc and run ./ide, then run this script again. If you have done this, enter 'y', if not, enter anything else"
+echo "---------------------------------------------------------------------------------"
+read r
+if [ "$r" = "y" ]
+then
+  
+  cd src
+  
+  make
+  
+  echo "Compiling"
+  javac -d ../bin -cp ../bin *.java
+  echo "---------------------------------------------------------------------------------"
+  echo "Input into dom"
+  echo "---------------------------------------------------------------------------------"
+  cat ../input.txt | dsl/brooks2 
+  echo "---------------------------------------------------------------------------------"
+  echo "Output from dom"
+  echo "---------------------------------------------------------------------------------"
+  cat ../input.txt | dsl/brooks2 | java -cp ../bin Dom
+  echo "---------------------------------------------------------------------------------"
+  echo "Expected"
+  echo "---------------------------------------------------------------------------------"
+  cat ../input.txt | dsl/brooks2 | dom
+  echo "---------------------------------------------------------------------------------"
+  echo "Output from the whole pipe"
+  echo "---------------------------------------------------------------------------------"
+  cat ../input.txt | dsl/brooks2 | java -cp ../bin Dom | bestrest | super | rank
+  echo "---------------------------------------------------------------------------------"
+  echo "Note that dom scores are calculated randomly, they should be approximately, but not exactly equal."
+  
+fi
